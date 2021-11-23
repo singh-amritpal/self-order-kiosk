@@ -1,0 +1,166 @@
+<!-- 
+  Author: Amritpal Singh 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Deli Shop</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Start Header -->
+    <header><h1>Welcome to the Deli Shop</h1></header>
+    <!-- End Header -->
+    <!-- Start Main -->
+    <main>
+      <!-- Start Shopping Cart Section -->
+      <div id="shoppingCart">
+        <h3>Your Shopping Cart</h3>
+        <!-- Start Shopping Cart Table -->
+        <table id="shoppingCartTable">  
+          <!-- Table Headers -->
+          <tr> 
+            <td class="shoppingCartHeader">Item</td>
+            <td class="shoppingCartHeader">Cost Per Item</td>
+            <td class="shoppingCartHeader">Quantity</td>
+            <td id = "clearCart"><button id="clearCartButton" onclick="clearCart()" disabled>Clear Cart</button></td>
+          </tr> 
+          <!-- End Table Headers -->
+          <!-- Start ShoppingCart_Item 1 -->
+          <tr> 
+            <td>Italian Sausages 1lb.</td>
+            <td id="sausagePrice"></td>
+            <td id="sausageQuantity" class="shoppintCartQuantity"></td>
+            <td>
+              <button id="sausageButton" onclick="addSausage()">Add to Cart</button>
+            </td>
+          </tr> 
+          <!-- End ShoppingCart_Item 1 -->
+          <!-- Start ShoppingCart_Item 2 -->
+          <tr> 
+            <td>Terra Delyssa Extra Light Olive Oil 1L</td>
+            <td id="oliveOilPrice"></td>
+            <td id="oliveOilQuantity" class="shoppintCartQuantity"></td>
+            <td>
+              <button id="oliveOilButton" onclick="addOliveOil()">Add to Cart</button>
+            </td>
+          </tr>
+          <!-- End ShoppingCart_Item 2 -->
+          <!-- Start ShoppingCart_Item 3 -->
+          <tr>
+            <td>Prego&reg; Original Pasta Sauce 645mL</td>
+            <td id="saucePrice"></td>
+            <td id="sauceQuantity" class="shoppintCartQuantity"></td>
+            <td>
+              <button id="sauceButton" onclick="addSauce()">Add to Cart</button>
+            </td>
+          </tr>
+          <!-- End ShoppingCart_Item 3 -->
+          <!-- Start ShoppingCart_Item 4 -->
+          <tr>
+            <td>Great Value Shredded Italian Cheese 320g</td>
+            <td id="cheesePrice"></td>
+            <td id="cheeseQuantity" class="shoppintCartQuantity"></td>
+            <td>
+              <button id="cheeseButton" onclick="addCheese()">Add to Cart</button>
+            </td>
+          </tr>
+          <!-- End ShoppingCart_Item 4 -->
+          <!-- Start ShoppingCart_Item 5 -->
+          <tr>
+            <td>Dempster’s&reg; Original Hot Dog Buns 376g</td>
+            <td id="bunsPrice"></td>
+            <td id="bunsQuantity" class="shoppintCartQuantity"></td>
+            <td><button id="bunsButton" onclick="addBuns()">Add to Cart</button></td>
+          </tr>
+          <!-- End ShoppingCart_Item 5 -->
+          <!-- Start ShoppingCart_Item Total Quantity -->
+          <tr>
+            <td id="totalQuantityText" colspan="2">Total Quantity</td>
+            <td id="totalQuantity" class="shoppintCartQuantity"></td>
+            <td id="checkout"></td> <!-- Placehodler for checkout button to be added dynamically -->
+          </tr>
+          <!-- End ShoppingCart_Item Total Quantity -->
+        </table>
+        <!-- End Shopping Cart Table -->
+      </div>
+      <!-- End Shoppig Cart Section -->
+      <!-- Start Receipt Section -->
+      <div id = "receipt">
+        <h3>Receipt</h3>
+        <!-- Start Customer Name -->
+        <h4 id= "customerName"></h4>
+        <!-- End Customer Name -->
+        <!-- Start Receipt Table -->
+        <table id="receiptTable">
+          <!-- Start Receipt_Headers -->
+          <tr id="receiptHeader">
+            <td class="receiptItemText">Item</td>
+            <td class="receiptItemText">Quantity</td>
+            <td class="receiptItemText">Total Price</td>
+          </tr>
+          <!-- End Receipt_Headers -->
+          <!-- Start Receipt_Item 1 -->
+          <tr id="sausageReceipt" class="receiptRow">
+            <td class="receiptItemText">Italian Sausages 1lb.</td>
+            <td class="receiptQuantityText" id="sausageQuantityReceipt"></td>
+            <td class="receiptPriceText" id="sausagePriceReceipt"></td>
+          </tr>
+          <!-- End Receipt_Item 1 -->
+          <!-- Start Receipt_Item 2 -->
+          <tr id="oliveOilReceipt" class="receiptRow">
+            <td class="receiptItemText">Terra Delyssa Extra Light Olive Oil 1L</td>
+            <td class="receiptQuantityText" id="oliveOilQuantityReceipt"></td>
+            <td class="receiptPriceText" id="oliveOilPriceReceipt"></td>
+          </tr>
+          <!-- End Receipt_Item 2 -->
+          <!-- Start Receipt_Item 3 -->
+          <tr id="sauceReceipt" class="receiptRow">
+            <td class="receiptItemText">Prego&reg; Original Pasta Sauce 645mL</td>
+            <td class="receiptQuantityText" id="sauceQuantityReceipt"></td>
+            <td class="receiptPriceText" id="saucePriceReceipt"></td>
+          </tr>
+          <!-- End Receipt_Item 3 -->
+          <!-- Start Receipt_Item 4 -->
+          <tr id="cheeseReceipt" class="receiptRow">
+            <td class="receiptItemText">Great Value Shredded Italian Cheese 320g</td>
+            <td class="receiptQuantityText" id="cheeseQuantityReceipt"></td>
+            <td class="receiptPriceText" id="cheesePriceReceipt"></td>
+          </tr>
+          <!-- End Receipt_Item 4 -->
+          <!-- Start Receipt_Item 5 -->
+          <tr id="bunsReceipt" class="receiptRow">
+            <td class="receiptItemText">Dempster’s&reg; Original Hot Dog Buns 376g</td>
+            <td class="receiptQuantityText" id="bunsQuantityReceipt"></td>
+            <td class="receiptPriceText" id="bunsPriceReceipt"></td>
+          </tr>
+          <!-- End Receipt_Item 5 -->
+          <!-- Start GST Calculation -->
+          <tr>
+            <td class="receiptItemText" id="gstPercentage" colspan="2"></td>
+            <td class="receiptPriceText" id="gstAmount" colspan="1"></td>
+          </tr>
+          <!-- End GST Calculation -->
+          <!-- Start Checkout Amount -->
+          <tr id="checkoutTotal">
+            <td class="receiptItemText" id="totalAmountText" colspan="2">Total</td>
+            <td class="receiptPriceText" id="totalAmount" colspan="1"></td>
+          </tr>
+          <!-- End Checkout Amount -->
+        </table>
+        <!-- End Receipt Table -->
+      </div>
+      <!-- End Receipt Section -->
+    </main>
+    <!-- End Main -->
+    <!-- Start Footer -->
+    <footer></footer>
+    <!-- End Footer -->
+    <!-- Start External Javascript files -->
+    <script src="index.js"></script>
+    <!-- End Eternal Javascript files -->
+  </body>
+</html>
